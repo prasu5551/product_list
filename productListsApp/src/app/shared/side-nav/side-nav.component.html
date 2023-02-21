@@ -1,0 +1,26 @@
+  <mat-toolbar color="primary" class="product-toolbar">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">
+            menu
+        </mat-icon>
+        <mat-icon *ngIf="sidenav.opened">
+            close
+        </mat-icon>
+    </button>
+    <h1 class="app-title"><a href="#" class="app-title--link">{{appTitle}} </a></h1>
+</mat-toolbar>
+
+<mat-sidenav-container class="product-sidenav-container">
+  <mat-sidenav #sidenav mode="side" opened>
+    <mat-nav-list *ngFor="let nav of fillerNav">
+      <a mat-list-item [routerLink]='nav.name' [routerLinkActive]="'is-active'">{{nav.label}}</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z4">
+        <router-outlet></router-outlet>
+    </div>
+     
+  </mat-sidenav-content>
+</mat-sidenav-container>

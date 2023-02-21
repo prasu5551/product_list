@@ -1,0 +1,30 @@
+<ng-container *ngIf="(products$ | async) as products">
+<mat-card class="products-card col-sm-1 col-md-4" *ngFor="let item of products | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index" >
+    <mat-card-header>      
+      
+      <mat-card-title> 
+        <i class="material-icons icon-styles">coffee</i>
+        <p class="product-title">{{item.blend_name}}</p> </mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <p> <span class="sub-heading">ID: </span> {{item.id}}</p>
+      <p><span class="sub-heading">Variety:</span> {{item.variety}}</p>
+      <p>
+        <a (click)="toggleDetails(i)" class="expand-details-link">           
+           <span *ngIf="expandedIndex !== i"> {{moreDetailsText}} </span>
+        </a>
+      </p>
+      <div *ngIf="expandedIndex === i" [ngClass]= "{'expanded-details': expandedIndex === i}">
+        <a (click)="toggleDetails(i)" class="expand-details-link">           
+             {{lessDetailsText}} 
+         </a>
+        <p><span class="sub-heading">origin:</span> {{item.origin}}</p>
+        <p><span class="sub-heading">Notes:</span> {{item.notes}}</p>
+        <p><span class="sub-heading">intensifier:</span> {{item.intensifier}}</p>
+      </div>
+      
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+  <pagination-controls (pageChange)="page = $event" class="float-right"></pagination-controls>

@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+/* Responsive Styles */
+// @media screen and (max-width: 767px) {
+   
+//   }
+
+//   @media screen and (max-width: 575px) {
+//     mat-card {
+//       width: 100%;
+//     }
+//   }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Angular Material Styles */
+table {
+  width: 100%;
+}
+.mat-footer-row,
+.mat-header-row,
+.mat-row {
+    min-width: 100%;
+}
+
+.mat-toolbar.mat-primary {
+  background-color: #8c1616;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  mat-card .products-card {
+    width: 100%;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  
+}

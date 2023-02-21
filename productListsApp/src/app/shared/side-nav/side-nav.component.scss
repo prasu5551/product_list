@@ -1,0 +1,49 @@
+mat-sidenav-container {
+    height: calc(100vh - 65px);
+}
+mat-toolbar {
+    background-color: #8c1616;
+    color: white;
+
+    & button {
+        background-color: transparent;
+        border: none;
+
+        & .mat-icon {
+            color: #fff;
+        }
+    }
+
+    & .app-title {
+        &--link {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+    }
+}
+mat-sidenav {
+    width: 200px;
+    color: white;
+    text-align: center;
+    & .is-active {
+        color: #8c1616;
+        font-weight: 500;
+    }
+
+}
+content {
+    height: calc(100vh - 100px);
+    padding-bottom: 20px;
+    margin-left: 20px 20px 20px 32px;
+}
+.product-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
