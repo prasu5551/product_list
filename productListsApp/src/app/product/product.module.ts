@@ -28,7 +28,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     MatTableModule,
     MatCardModule,
     NgxPaginationModule,
-    StoreModule.forFeature('myProduct', productReducer),
+    StoreModule.forFeature('allProducts', productReducer),
     EffectsModule.forFeature([ProductsEffect]),
   ]
 })

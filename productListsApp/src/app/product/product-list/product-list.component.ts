@@ -18,6 +18,7 @@ page: number = 1;
 isShowMore: boolean;
 moreDetailsText = 'More details..';
 lessDetailsText = 'Less details..';
+listTitle = 'Products List';
 itemsPerPage = 10;
 expandedIndex = -1;
   constructor(private store: Store) { }  

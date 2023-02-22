@@ -28,6 +28,10 @@
             cursor: pointer;
             color: #3f51b5;
         }
+
+        & .expanded-details, & .collapsed-details {
+           transition: 500ms ease;
+        }
     } & > p {
         margin-bottom: 0;
     }

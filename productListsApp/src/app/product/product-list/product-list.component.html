@@ -1,3 +1,4 @@
+<h1 class="list-title"> {{listTitle}}</h1>
 <ng-container *ngIf="(products$ | async) as products">
 <mat-card class="products-card col-sm-1 col-md-4" *ngFor="let item of products | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index" >
     <mat-card-header>      
@@ -11,18 +12,21 @@
       <p> <span class="sub-heading">ID: </span> {{item.id}}</p>
       <p><span class="sub-heading">Variety:</span> {{item.variety}}</p>
       <p>
-        <a (click)="toggleDetails(i)" class="expand-details-link">           
+        <a (click)="toggleDetails(i)" class="expand-details-link" [ngClass]= "expandedIndex !== i? 'expanded-details' : 'collapsed-details'">           
            <span *ngIf="expandedIndex !== i"> {{moreDetailsText}} </span>
         </a>
       </p>
-      <div *ngIf="expandedIndex === i" [ngClass]= "{'expanded-details': expandedIndex === i}">
-        <a (click)="toggleDetails(i)" class="expand-details-link">           
-             {{lessDetailsText}} 
-         </a>
-        <p><span class="sub-heading">origin:</span> {{item.origin}}</p>
-        <p><span class="sub-heading">Notes:</span> {{item.notes}}</p>
-        <p><span class="sub-heading">intensifier:</span> {{item.intensifier}}</p>
+      <div [ngClass]= "expandedIndex === i? 'expanded-details' : 'collapsed-details'"> 
+        <div *ngIf="expandedIndex === i">
+          <a (click)="toggleDetails(i)" class="expand-details-link">           
+               {{lessDetailsText}} 
+           </a>
+          <p><span class="sub-heading">origin:</span> {{item.origin}}</p>
+          <p><span class="sub-heading">Notes:</span> {{item.notes}}</p>
+          <p><span class="sub-heading">intensifier:</span> {{item.intensifier}}</p>
+        </div>
       </div>
+      
       
     </mat-card-content>
   </mat-card>

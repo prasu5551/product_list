@@ -1,12 +1,12 @@
-import { Component, OnInit, ChangeDetectorRef, ViewChild, Input } from '@angular/core';
-import {BreakpointObserver, MediaMatcher} from '@angular/cdk/layout';
+import { Component, OnInit, ChangeDetectorRef, ViewChild, Input, ChangeDetectionStrategy } from '@angular/core';
+import {BreakpointObserver} from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
-import { ActivatedRoute, Route } from '@angular/router';
 
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
-  styleUrls: ['./side-nav.component.scss']
+  styleUrls: ['./side-nav.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SideNavComponent {
 
@@ -15,8 +15,7 @@ export class SideNavComponent {
   @Input() fillerNav: any[];
 
     constructor(private observer: BreakpointObserver,
-                private changeDetectRef: ChangeDetectorRef,
-                private route: ActivatedRoute) {}
+                private changeDetectRef: ChangeDetectorRef) {}
   ngAfterViewInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
       if(res.matches) {

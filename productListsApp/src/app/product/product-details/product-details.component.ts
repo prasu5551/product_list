@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-product-details',
   template: `
-  <h2>Product Details</h2>
+  <h1>Product Details</h1>
   `,
   styles: [
   ]
