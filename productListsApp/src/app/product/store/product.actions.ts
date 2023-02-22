@@ -7,5 +7,9 @@ export const getProductAPI = createAction(
 
 export const productsGetAPISuccess = createAction(
     '[Products API] Get Products API Success',
-    props<{ allProducts: Products[]}>()
+    props<{ products: Products[]}>()
+)
+export const productsGetAPIFalilure = createAction(
+    '[Products API] Get Products API Failure',
+    props<{ error: string}>()
 )

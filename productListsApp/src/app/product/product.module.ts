@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { StoreModule } from '@ngrx/store';
 import { productReducer } from './store/products.reducer';
@@ -27,8 +28,9 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     MatPaginatorModule,
     MatTableModule,
     MatCardModule,
+    MatProgressSpinnerModule,
     NgxPaginationModule,
-    StoreModule.forFeature('allProducts', productReducer),
+    StoreModule.forFeature('products', productReducer),
     EffectsModule.forFeature([ProductsEffect]),
   ]
 })

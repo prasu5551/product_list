@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { selectProducts } from 'src/app/product/store/products.selector';
+import { AppStateInterface } from 'src/app/types/appState.interface';
 import * as ProductActions from '../store/product.actions';
+import { errorSelector, isLoadingSelector, productsSelector } from '../store/products.selector';
 
 @Component({
   selector: 'app-product-list',
@@ -11,8 +12,15 @@ import * as ProductActions from '../store/product.actions';
 })
 export class ProductListComponent implements OnInit {
 
-  /** get the data from the store selector 'selectproducts  */
-products$ = this.store.pipe(select(selectProducts));
+  /** 
+   *  @isLoadingSelector
+   *  @productsSelector
+   *  @errorSelector
+   * get the data from the store selectors */
+
+isLoading$ = this.store.pipe(select(isLoadingSelector));
+products$ = this.store.pipe(select(productsSelector));
+error$ = this.store.pipe(select(errorSelector));
 
 page: number = 1;
 isShowMore: boolean;
@@ -21,7 +29,7 @@ lessDetailsText = 'Less details..';
 listTitle = 'Products List';
 itemsPerPage = 10;
 expandedIndex = -1;
-  constructor(private store: Store) { }  
+  constructor(private store: Store<AppStateInterface>) { }  
 
   ngOnInit(): void { 
     /** Update the store with retrieved data */

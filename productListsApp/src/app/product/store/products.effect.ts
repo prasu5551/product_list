@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { select, Store } from "@ngrx/store";
-import { EMPTY, map, mergeMap, withLatestFrom } from "rxjs";
+import { catchError, map, mergeMap, of } from "rxjs";
 import { CoffeesService } from "src/app/services/coffees.service";
-import { getProductAPI, productsGetAPISuccess } from "./product.actions";
+import { getProductAPI, productsGetAPIFalilure, productsGetAPISuccess } from "./product.actions";
 
 
 @Injectable()
@@ -11,30 +10,19 @@ import { getProductAPI, productsGetAPISuccess } from "./product.actions";
 export class ProductsEffect {
 
     constructor(private action$: Actions,
-        private coffeService: CoffeesService,
-        private store: Store) {}
+        private coffeService: CoffeesService) {}
 
-    // loadProducts$ = createEffect(() =>
-    //     this.action$.pipe(ofType(getProductAPI),
-    //     withLatestFrom(this.store.pipe(select(selectProducts))),
-    //     mergeMap(([, productfromStore]) => {
-    //         if(productfromStore.length > 0) {
-    //             return EMPTY;
-    //         }
-    //         return this.coffeService.getCoffees()
-    //         .pipe(map((data) => productsGetAPISuccess({ allProducts: data })));
-    //     })
-    //     )
-    // );
-
-    loadProducts$ = createEffect(() => 
+    loadProducts$ = createEffect(() =>
         this.action$.pipe(
-            ofType(getProductAPI),
-            mergeMap(() => {
-                return this.coffeService
-                .getCoffees()
-                .pipe(map((data) => productsGetAPISuccess({ allProducts: data })));
-            })
+        ofType(getProductAPI),
+        mergeMap(() => {
+            return this.coffeService.getCoffees().pipe(
+            map((data) => productsGetAPISuccess({ products: data })),
+            catchError((error) =>
+                of(productsGetAPIFalilure({ error: error.message }))
+            )
+            );
+        })
         )
-    );
+  );
 }

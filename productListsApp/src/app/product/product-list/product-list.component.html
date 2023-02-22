@@ -30,5 +30,8 @@
       
     </mat-card-content>
   </mat-card>
-</ng-container>
   <pagination-controls (pageChange)="page = $event" class="float-right"></pagination-controls>
+</ng-container>
+  
+
+  <mat-spinner class="spinner" *ngIf="isLoading$ | async"></mat-spinner>

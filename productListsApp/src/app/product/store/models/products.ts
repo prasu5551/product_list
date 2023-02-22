@@ -6,10 +6,9 @@ export interface Products {
     variety: string;
     notes: string;
     intensifier: string;
-    isExpanded: boolean;
 }
-// export interface ProductInterface {
-//     isLoading: boolean;
-//     products: Products[];
-//     error: string | null;
-// }
+export interface ProductStateInterface {
+    isLoading: boolean;
+    products: Products[];
+    error: string | null;
+}
